@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+(function(){
+  var saved = localStorage.getItem('theme');
+  var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  var theme = saved || (prefersDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
+})();
+</script>
+<title>Kadambari Purohit — Business Systems Analyst · ERP Implementation · Process Automation</title>
+<meta name="description" content="Business Systems Analyst with hands-on ERP implementation, vendor evaluation, and operational systems delivery in pharma and manufacturing.">
+<meta name="keywords" content="Business Systems Analyst, ERP Implementation, Process Automation, Digital Transformation, Workflow Automation, Vendor Evaluation, Jodhpur">
+<meta property="og:title" content="Kadambari Purohit — Business Systems Analyst">
+<meta property="og:description" content="I translate operational problems into working systems. Real case studies, real decision logs, real outcomes.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#1E3A5F; --navy-dk:#14283f; --teal:#0F766E; --teal-lt:#e6f4f3;
+  --amber:#92600C; --amber-lt:#faf1e0;
+  --bg:#FAFAFA; --white:#FFFFFF; --surface:#FFFFFF; --head:#1E3A5F;
+  --ink:#2D3748; --ink2:#5A6472; --hover:#f0f0ec;
+  --line:#E2E2DD; --line2:#C9CCC3;
+}
+[data-theme="dark"]{
+  --bg:#12181f; --surface:#1b232c; --head:#8fb4da;
+  --ink:#e4e8ec; --ink2:#9aa7b4; --hover:#232d38;
+  --line:#2b3540; --line2:#3a4550;
+  --teal:#2dd4bf; --teal-lt:rgba(45,212,191,.12);
+  --amber:#f2b544; --amber-lt:rgba(242,181,68,.12);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;transition:background .2s,color .2s}
+.wrap{max-width:1280px;margin:0 auto;padding:0 40px}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:14px}
+.eyebrow::before{content:'— '}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;background:var(--surface);border-bottom:1px solid var(--line);transition:background .2s}
+.nav-inner{max-width:1280px;margin:0 auto;padding:18px 40px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.nav-logo{font-family:'Source Serif 4',serif;font-size:1.1rem;font-weight:600;color:var(--head);text-decoration:none}
+.nav-links{display:flex;gap:30px;list-style:none;align-items:center}
+.nav-links a{text-decoration:none;color:var(--ink2);font-size:.86rem;font-weight:500;transition:color .15s}
+.nav-links a:hover{color:var(--teal)}
+.nav-cta{border:1px solid var(--head);color:var(--head)!important;padding:6px 16px;font-size:.8rem!important}
+.nav-cta:hover{background:var(--navy);color:var(--white)!important}
+.nav-burger{display:none;background:none;border:1px solid var(--line2);padding:6px 11px;cursor:pointer;color:var(--head)}
+.theme-toggle{border:1px solid var(--line2);background:transparent;color:var(--head);width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s;flex-shrink:0}
+.theme-toggle:hover{border-color:var(--head);background:var(--hover)}
+.theme-toggle .icon-sun{display:none}
+[data-theme="dark"] .theme-toggle .icon-sun{display:block}
+[data-theme="dark"] .theme-toggle .icon-moon{display:none}
+
+/* BUTTONS */
+.btn{display:inline-block;font-size:.9rem;font-weight:600;text-decoration:none;padding:12px 26px;border:1px solid var(--head);transition:all .15s;cursor:pointer}
+.btn-fill{background:var(--navy);color:var(--white)}
+.btn-fill:hover{background:var(--navy-dk)}
+.btn-ghost{color:var(--head);background:transparent}
+.btn-ghost:hover{background:var(--navy);color:var(--white)}
+
+/* HERO */
+#hero{padding:80px 0 0;border-bottom:1px solid var(--line)}
+.hero-kicker{font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin-bottom:20px}
+.hero-h1{font-family:'Source Serif 4',serif;font-size:clamp(2.5rem,5.2vw,3.8rem);color:var(--head);line-height:1.08;margin-bottom:16px;letter-spacing:-.02em}
+.hero-role{font-size:1.1rem;font-weight:600;color:var(--teal);margin-bottom:20px}
+.hero-body{font-size:1.02rem;color:var(--ink2);max-width:640px;margin-bottom:32px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:44px}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.fact{padding:22px 24px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.fact-n{font-family:'Source Serif 4',serif;font-size:1.6rem;font-weight:600;color:var(--head);line-height:1;margin-bottom:5px}
+.fact-l{font-size:.78rem;color:var(--ink2)}
+
+/* TESTIMONIAL */
+#testimonial{background:var(--navy);padding:44px 0}
+.quote-mark{font-family:'Source Serif 4',serif;font-size:2.6rem;color:#4a6a8c;line-height:.5;margin-bottom:8px}
+.quote-txt{font-family:'Source Serif 4',serif;font-style:italic;font-size:1.2rem;color:#e8eef4;line-height:1.55;max-width:820px;margin-bottom:16px}
+.quote-src{font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:#8fa3bd;letter-spacing:.04em}
+
+/* SECTIONS */
+.sec{padding:80px 0}
+.sec-alt{background:var(--surface)}
+.sec-head{margin-bottom:44px}
+.sec-h2{font-family:'Source Serif 4',serif;font-size:clamp(1.6rem,3vw,2.05rem);color:var(--head);line-height:1.2;margin-bottom:12px;letter-spacing:-.01em}
+.sec-sub{font-size:.95rem;color:var(--ink2);max-width:600px}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1.55fr 1fr;gap:60px}
+.about-body p{font-size:1rem;color:var(--ink);margin-bottom:16px}
+.about-body strong{color:var(--head);font-weight:600}
+.info-card{border:1px solid var(--line)}
+.info-row{display:flex;justify-content:space-between;padding:13px 18px;border-bottom:1px solid var(--line);font-size:.87rem}
+.info-row:last-child{border-bottom:none}
+.info-k{color:var(--ink2);font-weight:500}
+.info-v{color:var(--head);font-weight:600;text-align:right}
+.info-v a{color:var(--teal);text-decoration:none}
+.info-v a:hover{text-decoration:underline}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.pill{border:1px solid var(--line2);padding:5px 12px;font-size:.77rem;color:var(--head);font-weight:500}
+
+/* EXPERIENCE */
+.role{display:grid;grid-template-columns:200px 1fr;gap:36px;padding:34px 0;border-bottom:1px solid var(--line)}
+.role:first-of-type{padding-top:0}
+.role-date{font-family:'IBM Plex Mono',monospace;font-size:.77rem;color:var(--ink2);margin-bottom:5px}
+.role-co{font-size:.89rem;font-weight:600;color:var(--head)}
+.role-co-s{font-size:.81rem;color:var(--ink2);margin-top:2px}
+.role-title{font-family:'Source Serif 4',serif;font-size:1.14rem;font-weight:600;color:var(--head);margin-bottom:14px}
+.role-pts{list-style:none}
+.role-pts li{position:relative;padding-left:17px;margin-bottom:10px;font-size:.92rem;color:var(--ink)}
+.role-pts li::before{content:'';position:absolute;left:0;top:9px;width:5px;height:5px;background:var(--teal)}
+.role-stack{margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:.77rem;color:var(--ink2)}
+.role-stack b{color:var(--head);font-weight:500}
+
+/* CASE STUDY (shared) */
+.case{border:1px solid var(--line);margin-bottom:26px;background:var(--surface)}
+.case.flagship{border:1.5px solid var(--teal)}
+.ribbon{display:inline-block;background:var(--teal);color:var(--white);font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;margin-bottom:14px}
+.case-head{padding:26px 30px 6px}
+.case-cat{font-family:'IBM Plex Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.07em;color:var(--teal);margin-bottom:6px}
+.case-title{font-family:'Source Serif 4',serif;font-size:1.3rem;color:var(--head);margin-bottom:18px}
+.art-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.art-tag{font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--ink2);border:1px dashed var(--line2);padding:3px 9px}
+
+.case-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;padding:8px 30px 26px}
+.col-lbl{font-family:'IBM Plex Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--ink2);margin-bottom:8px}
+.col-txt{font-size:.9rem;color:var(--ink);line-height:1.62}
+
+.acc-btn{width:100%;text-align:left;background:var(--bg);border:none;border-top:1px solid var(--line);padding:14px 30px;font-family:'Inter',sans-serif;font-size:.85rem;font-weight:600;color:var(--head);cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.acc-btn:hover{background:var(--hover)}
+.acc-chevron{transition:transform .2s;font-size:.9rem}
+.acc-btn.open .acc-chevron{transform:rotate(180deg)}
+.acc-body{display:none;border-top:1px solid var(--line)}
+.acc-body.open{display:block}
+
+.deep-block{padding:26px 30px;border-bottom:1px solid var(--line)}
+.deep-block:last-child{border-bottom:none}
+.deep-lbl{font-family:'IBM Plex Mono',monospace;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--head);margin-bottom:14px;font-weight:500}
+
+/* tabs for diagram */
+.tabs{display:flex;gap:0;margin-bottom:18px;border:1px solid var(--line2);width:fit-content}
+.tab-btn{font-family:'IBM Plex Mono',monospace;font-size:.78rem;padding:8px 18px;background:var(--surface);border:none;cursor:pointer;color:var(--ink2);border-right:1px solid var(--line2)}
+.tab-btn:last-child{border-right:none}
+.tab-btn.active{background:var(--navy);color:var(--white)}
+.diagram-wrap{border:1px solid var(--line);background:var(--bg);padding:16px;overflow-x:auto}
+.diagram-wrap svg{display:block;min-width:640px}
+
+/* decision log table */
+.dlog{width:100%;border-collapse:collapse;margin-top:6px}
+.dlog th{font-family:'IBM Plex Mono',monospace;font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink2);text-align:left;padding:9px 12px;border-bottom:2px solid var(--head);background:var(--bg)}
+.dlog td{font-size:.85rem;color:var(--ink);padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+.dlog tr:last-child td{border-bottom:none}
+.dlog td.dchoice{color:var(--teal);font-weight:600;white-space:nowrap}
+
+/* verified / estimate badges */
+.outc-line{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;font-size:.9rem;color:var(--ink);line-height:1.55}
+.outc-line:last-child{margin-bottom:0}
+.badge{flex-shrink:0;font-family:'IBM Plex Mono',monospace;font-size:.65rem;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;margin-top:2px;white-space:nowrap}
+.badge-v{background:var(--teal-lt);color:var(--teal);border:1px solid var(--teal)}
+.badge-e{background:var(--amber-lt);color:var(--amber);border:1px dashed var(--amber)}
+
+.biz-lens{display:flex;flex-direction:column;gap:8px;margin-top:16px}
+.biz-item{font-size:.85rem;color:var(--ink2);padding-left:12px;border-left:2px solid var(--line2)}
+.biz-item b{color:var(--head);font-weight:600}
+
+.case-foot{padding:16px 30px;background:var(--bg);border-top:1px solid var(--line);display:flex;gap:7px;flex-wrap:wrap}
+.tag{font-size:.75rem;color:var(--head);border:1px solid var(--line2);padding:3px 10px;background:var(--surface)}
+
+/* ALSO BUILT */
+.also-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.also-card{border:1px solid var(--line);padding:22px;background:var(--surface)}
+.also-title{font-family:'Source Serif 4',serif;font-size:1rem;font-weight:600;color:var(--head);margin-bottom:10px}
+.also-txt{font-size:.85rem;color:var(--ink2);line-height:1.55;margin-bottom:10px}
+.also-outcome{font-size:.8rem;color:var(--teal);font-weight:600}
+
+/* DECISIONS reuse */
+.dec{border:1px solid var(--line);margin-bottom:24px;background:var(--surface)}
+.dec-head{padding:22px 30px;border-bottom:1px solid var(--line)}
+.dec-type{font-family:'IBM Plex Mono',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.07em;color:var(--teal);margin-bottom:6px}
+.dec-title{font-family:'Source Serif 4',serif;font-size:1.15rem;color:var(--head)}
+.dec-body{padding:22px 30px}
+.dec-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-bottom:24px}
+.insight-box{border-left:3px solid var(--teal);padding:14px 18px;background:var(--teal-lt);margin-top:8px}
+.insight-lbl{font-family:'IBM Plex Mono',monospace;font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;color:var(--teal);margin-bottom:7px}
+.insight-txt{font-size:.87rem;color:var(--ink);line-height:1.6}
+
+/* SKILLS */
+.skills-tbl{border-top:1px solid var(--line)}
+.skill-row{display:grid;grid-template-columns:190px 1fr;padding:18px 0;border-bottom:1px solid var(--line)}
+.skill-cat{font-family:'Source Serif 4',serif;font-size:.92rem;font-weight:600;color:var(--head)}
+.skill-items{display:flex;flex-wrap:wrap;gap:9px 20px}
+.skill-item{font-size:.88rem;color:var(--ink)}
+.skill-item::before{content:'— ';color:var(--teal)}
+
+/* EDU */
+.edu-row{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.edu-card{border:1px solid var(--line);padding:26px}
+.edu-deg{font-family:'Source Serif 4',serif;font-size:1.02rem;font-weight:600;color:var(--head);margin-bottom:5px}
+.edu-school{font-size:.87rem;color:var(--ink2);margin-bottom:10px}
+.edu-date{font-family:'IBM Plex Mono',monospace;font-size:.74rem;color:var(--ink2);margin-bottom:13px}
+.edu-badge{display:inline-block;background:var(--navy);color:var(--white);font-size:.77rem;font-weight:600;padding:6px 13px}
+
+/* CONTACT */
+#contact{background:var(--navy)}
+#contact .eyebrow{color:#7fd4cb}
+#contact .sec-h2{color:var(--white)}
+.contact-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:52px}
+.contact-body{color:#c9d6e3;font-size:1rem;margin-bottom:22px}
+.contact-links{border-top:1px solid rgba(255,255,255,.18)}
+.contact-link{display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.18);text-decoration:none}
+.contact-link:hover{opacity:.65}
+.contact-link .lk{font-family:'IBM Plex Mono',monospace;font-size:.76rem;color:#8fa3bd;text-transform:uppercase;letter-spacing:.06em}
+.contact-link .lv{color:var(--white);font-weight:600;font-size:.92rem}
+.avail-box{border:1px solid rgba(255,255,255,.25);padding:24px}
+.avail-title{font-family:'Source Serif 4',serif;font-size:1.05rem;color:var(--white);margin-bottom:9px}
+.avail-body{font-size:.86rem;color:#c9d6e3;line-height:1.65;margin-bottom:16px}
+.avail-tags{display:flex;flex-wrap:wrap;gap:7px}
+.avail-tags span{font-size:.74rem;border:1px solid rgba(255,255,255,.3);color:#c9d6e3;padding:4px 10px}
+
+footer{background:var(--navy-dk);padding:22px 0;text-align:center}
+footer p{font-family:'IBM Plex Mono',monospace;font-size:.77rem;color:#7e92a8}
+footer a{color:#7fd4cb;text-decoration:none}
+
+@media(max-width:900px){
+  .about-grid,.role,.case-cols,.dec-cols,.contact-grid{grid-template-columns:1fr}
+  .role,.also-grid{grid-template-columns:1fr}
+  .also-grid{grid-template-columns:1fr}
+  .skill-row,.edu-row{grid-template-columns:1fr;gap:8px}
+  .facts{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+  .nav-links{display:none}
+  .nav-burger{display:block}
+  .sec{padding:56px 0}
+  .wrap{padding:0 18px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">Kadambari Purohit</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#decisions">Decisions</a></li>
+      <li><a href="#skills">Capabilities</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
+      <li>
+        <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <svg class="icon-moon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+      </li>
+    </ul>
+    <button class="nav-burger" onclick="toggleNav()">☰</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-kicker">Business Systems Analyst · ERP Implementation · Digital Transformation</div>
+    <h1 class="hero-h1">Kadambari Purohit</h1>
+    <div class="hero-role">I translate operational problems into working systems.</div>
+    <p class="hero-body">I own end-to-end digital operations at a regulated pharma and manufacturing company — with no IT team. Most recently: evaluated a CRM's built-in follow-up automation, found a structural gap against vendor documentation, and built the replacement myself. It's in production use today. That build-vs-buy discipline runs through everything below.</p>
+    <div class="hero-btns">
+      <a href="#work" class="btn btn-fill">See the Work</a>
+      <a href="Kadambari_Purohit_Resume_2026.pdf" download class="btn btn-ghost">Download Resume ↓</a>
+    </div>
+  </div>
+  <div class="wrap" style="padding-left:0;padding-right:0;">
+    <div class="facts">
+      <div class="fact"><div class="fact-n">7</div><div class="fact-l">Production systems shipped &amp; maintained solo</div></div>
+      <div class="fact"><div class="fact-n">40+</div><div class="fact-l">Daily active users across departments</div></div>
+      <div class="fact"><div class="fact-n">0</div><div class="fact-l">Missed certificate renewals since deployment</div></div>
+      <div class="fact"><div class="fact-n">20+</div><div class="fact-l">Enterprise platforms evaluated</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section id="testimonial">
+  <div class="wrap">
+    <div class="quote-mark">“</div>
+    <p class="quote-txt">Exceptional dedication, brilliant problem-solving, and impactful automation — truly elevated our operational efficiency and helped drive our digital transformation forward.</p>
+    <div class="quote-src">— General Manager, internal performance review</div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="sec sec-alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Profile</div>
+      <h2 class="sec-h2">Sole owner of internal systems.<br>End to end.</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-body">
+        <p>I joined a pharma and manufacturing company as the <strong>first and only person responsible for internal technology</strong>. No IT department. No technical peer. No handover documentation.</p>
+        <p>What existed: an ERP that departments worked around rather than with, paper registers for inventory, informal messaging for task coordination, and manual document generation for every regulatory request.</p>
+        <p>What I built: seven systems now in daily production use — from warehouse inventory to a Gmail-native automation that replaced a CRM feature that didn't fit how the team actually worked.</p>
+        <p>What I evaluated: <strong>20+ enterprise platforms</strong> across ERP, CRM, WMS, eQMS, and regulatory software — running structured cycles, conducting UAT, and identifying a critical security defect that the vendor's own QA had missed.</p>
+        <p>My measure for any system: did it retire the manual process it replaced?</p>
+        <div class="pills">
+          <span class="pill">ERP Implementation</span>
+          <span class="pill">Vendor Evaluation</span>
+          <span class="pill">Process Automation</span>
+          <span class="pill">Requirements Gathering</span>
+          <span class="pill">UAT &amp; Quality Assurance</span>
+          <span class="pill">Build vs. Buy Analysis</span>
+          <span class="pill">Regulatory Compliance</span>
+        </div>
+      </div>
+      <div>
+        <div class="info-card">
+          <div class="info-row"><span class="info-k">Location</span><span class="info-v">Jodhpur, Rajasthan</span></div>
+          <div class="info-row"><span class="info-k">Email</span><span class="info-v"><a href="mailto:kadambari0608@gmail.com">kadambari0608@gmail.com</a></span></div>
+          <div class="info-row"><span class="info-k">LinkedIn</span><span class="info-v"><a href="https://www.linkedin.com/in/kadambari-purohit-8604ba243" target="_blank">View Profile</a></span></div>
+          <div class="info-row"><span class="info-k">GitHub</span><span class="info-v"><a href="https://github.com/kadambari68" target="_blank">View Repositories</a></span></div>
+          <div class="info-row"><span class="info-k">Availability</span><span class="info-v" style="color:var(--teal)">Open to opportunities</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Experience</div>
+      <h2 class="sec-h2">Professional Background</h2>
+    </div>
+
+    <div class="role">
+      <div>
+        <div class="role-date">Oct 2025 — Present</div>
+        <div class="role-co">Pharma &amp; Manufacturing Company</div>
+        <div class="role-co-s">Jodhpur, Rajasthan</div>
+      </div>
+      <div>
+        <div class="role-title">ERP Planning &amp; Implementation Executive</div>
+        <ul class="role-pts">
+          <li>Sole technical owner of all internal systems — requirement gathering, design, build, deployment, training, and iteration, with no IT team or technical peer.</li>
+          <li>Shipped and maintain 7 production systems in daily use by 40+ people across warehouse, QA, production, sales, and management.</li>
+          <li>Evaluated a CRM's built-in automation feature against vendor documentation, confirmed a structural gap, and built an in-house Gmail-based replacement now in active use.</li>
+          <li>Automated document generation for teams, replacing repetitive manual preparation with guided workflows and PDF generation.</li>
+          <li>Conducted structured vendor evaluations across 20+ enterprise platforms spanning CRM, eQMS, WMS,cosmetic compliance software and regulatory software; evaluation outputs used directly in procurement decisions.</li>
+          <li>Identified and escalated a critical data exposure defect during CRM user in ERP.</li>
+          <li>Built Power BI dashboards for cross-team reporting and data visualization.</li>
+        </ul>
+        <div class="role-stack">Stack — <b>Google Apps Script · JavaScript · Python · VBA · Supabase · Power BI · SQL</b></div>
+      </div>
+    </div>
+
+    <div class="role">
+      <div>
+        <div class="role-date">May 2024 — Aug 2024</div>
+        <div class="role-co">IT Services Company</div>
+        <div class="role-co-s">Cloud Infrastructure · Jaipur</div>
+      </div>
+      <div>
+        <div class="role-title">Cloud Infrastructure Intern</div>
+        <ul class="role-pts">
+          <li>Configured cloud monitoring and alerting pipelines for VM health with automated incident notification.</li>
+          <li>Deployed and configured load balancers connecting VMs and application gateways.</li>
+        </ul>
+        <div class="role-stack">Stack — <b>Microsoft Azure · Azure Monitor</b></div>
+      </div>
+    </div>
+
+    <div class="role">
+      <div>
+        <div class="role-date">May 2023 — Sep 2023</div>
+        <div class="role-co">IIT Roorkee — Virtual Labs</div>
+        <div class="role-co-s">Remote</div>
+      </div>
+      <div>
+        <div class="role-title">Web Developer</div>
+        <ul class="role-pts">
+          <li>Built an interactive power electronics simulation lab used by engineering students nationally.</li>
+          <li><a href ="https://pe-iitr.vlabs.ac.in/List%20of%20experiments.html">Live link </a></li>
+        </ul>
+        <div class="role-stack">Stack — <b>JavaScript · Chart.js · Plotly.js</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK / CASE STUDIES -->
+<section id="work" class="sec sec-alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Featured Work</div>
+      <h2 class="sec-h2">Three Systems. Real Problems, Real Trade-offs.</h2>
+      <p class="sec-sub">Not a feature list — the actual decisions, artifacts, and trade-offs behind each build. Click any case to see the full process.</p>
+    </div>
+
+    <!-- ══════ FLAGSHIP: Email Automation ══════ -->
+    <div class="case flagship">
+      <div class="case-head">
+        <span class="ribbon">★ Featured Case Study</span>
+        <div class="case-cat">Sales &amp; Marketing Operations · Build vs. Buy</div>
+        <div class="case-title">Email Follow-up Automation — Gmail Add-on</div>
+        <div class="art-tags">
+          <span class="art-tag">Process Diagram</span>
+          <span class="art-tag">Decision Log</span>
+          <span class="art-tag">Vendor Doc Review</span>
+        </div>
+      </div>
+
+      <div class="case-cols">
+        <div>
+          <div class="col-lbl">Problem</div>
+          <div class="col-txt">The team's CRM included a built-in follow-up sequencing feature. It didn't fit how the team actually worked: follow-ups needed to stay anchored to the exact email thread they came from, not a generic contact record. Reps were manually re-finding threads and rebuilding context before every follow-up — the automation meant to save time was adding steps.</div>
+        </div>
+        <div>
+          <div class="col-lbl">My Role</div>
+          <div class="col-txt">I ran the technical evaluation of the CRM's native feature against the team's actual workflow, documented the gap against vendor product documentation, made the build-vs-buy call, then designed, built, and shipped the replacement — including the sidebar interface reps use daily.</div>
+        </div>
+        <div>
+          <div class="col-lbl">Snapshot</div>
+          <div class="col-txt"><span class="badge badge-v" style="margin-bottom:8px;display:inline-block;">Verified</span><br>In production since July 2026. Rolled out to the full marketing team.</div>
+        </div>
+      </div>
+
+      <button class="acc-btn open" onclick="toggleAcc(this,'flagship-body')">
+        <span>View Full Case Study — Process, Decisions &amp; Outcome</span>
+        <span class="acc-chevron">▾</span>
+      </button>
+
+      <div class="acc-body open" id="flagship-body">
+
+        <div class="deep-block">
+          <div class="deep-lbl">Process &amp; Artifact — Before vs. After</div>
+          <div class="tabs">
+            <button class="tab-btn active" onclick="showFlow('manual', this)">Manual Process</button>
+            <button class="tab-btn" onclick="showFlow('auto', this)">Automated Process</button>
+          </div>
+          <div class="diagram-wrap">
+            <svg viewBox="0 0 900 170" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                  <path d="M0,0 L6,3 L0,6 Z" fill="#5A6472"/>
+                </marker>
+              </defs>
+
+              <g id="flow-manual">
+                <g>
+                  <rect x="10" y="50" width="150" height="70" fill="#FAFAFA" stroke="#C9CCC3"/>
+                  <text x="85" y="80" text-anchor="middle" font-family="Inter" font-size="11" fill="#2D3748">Email arrives</text>
+                  <text x="85" y="96" text-anchor="middle" font-family="Inter" font-size="11" fill="#2D3748">in thread</text>
+                  <title>Step 1: Email arrives in a Gmail thread</title>
+                </g>
+                <line x1="160" y1="85" x2="192" y2="85" stroke="#5A6472" stroke-width="1.5" marker-end="url(#arrow)"/>
+                <g>
+                  <rect x="192" y="50" width="150" height="70" fill="#FAFAFA" stroke="#C9CCC3"/>
+                  <text x="267" y="74" text-anchor="middle" font-family="Inter" font-size="11" fill="#2D3748">Rep notes "follow</text>
+                  <text x="267" y="90" text-anchor="middle" font-family="Inter" font-size="11" fill="#2D3748">up" in separate</text>
+                  <text x="267" y="106" text-anchor="middle" font-family="Inter" font-size="11" fill="#2D3748">tracker</text>
+                  <title>Step 2: Manually logged in a separate tracking sheet</title>
+                </g>
+                <line x1="342" y1="85" x2="374" y2="85" stroke="#5A6472" stroke-width="1.5" marker-end="url(#arrow)"/>
+                <g>
+                  <rect x="374" y="50" width="150" height="70" fill="#FAFAFA" stroke="#C9CCC3"/>
+                  <text x="449" y="80" text-anchor="middle" font-family="Inter" font-size="11" fill="#2D3748">Rep periodically</text>
+                  <text x="449" y="96" text-anchor="middle" font-family="Inter" font-size="11" fill="#2D3748">checks tracker</text>
+                  <title>Step 3: Periodic manual check of the tracker</title>
+                </g>
+                <line x1="524" y1="85" x2="556" y2="85" stroke="#5A6472" stroke-width="1.5" marker-end="url(#arrow)"/>
+                <g>
+                  <rect x="556" y="50" width="150" height="70" fill="#FAFAFA" stroke="#C9CCC3"/>
+                  <text x="631" y="74" text-anchor="middle" font-family="Inter" font-size="11" fill="#2D3748">Rep searches</text>
+                  <text x="631" y="90" text-anchor="middle" font-family="Inter" font-size="11" fill="#2D3748">inbox to relocate</text>
+                  <text x="631" y="106" text-anchor="middle" font-family="Inter" font-size="11" fill="#2D3748">the thread</text>
+                  <title>Step 4: Search inbox to re-find the original thread</title>
+                </g>
+                <line x1="706" y1="85" x2="738" y2="85" stroke="#5A6472" stroke-width="1.5" marker-end="url(#arrow)"/>
+                <g>
+                  <rect x="738" y="50" width="150" height="70" fill="#e6f4f3" stroke="#0F766E"/>
+                  <text x="813" y="74" text-anchor="middle" font-family="Inter" font-size="11" fill="#1E3A5F">Manually draft</text>
+                  <text x="813" y="90" text-anchor="middle" font-family="Inter" font-size="11" fill="#1E3A5F">follow-up, re-reading</text>
+                  <text x="813" y="106" text-anchor="middle" font-family="Inter" font-size="11" fill="#1E3A5F">for context, then send</text>
+                  <title>Step 5: Manually draft and send, rebuilding context first</title>
+                </g>
+              </g>
+
+              <g id="flow-auto" style="display:none;">
+                <g>
+                  <rect x="60" y="50" width="190" height="70" fill="#FAFAFA" stroke="#C9CCC3"/>
+                  <text x="155" y="74" text-anchor="middle" font-family="Inter" font-size="11" fill="#2D3748">Thread flagged for</text>
+                  <text x="155" y="90" text-anchor="middle" font-family="Inter" font-size="11" fill="#2D3748">follow-up directly</text>
+                  <text x="155" y="106" text-anchor="middle" font-family="Inter" font-size="11" fill="#2D3748">inside Gmail</text>
+                  <title>Step 1: Rep flags the thread from within Gmail, no separate tool</title>
+                </g>
+                <line x1="250" y1="85" x2="292" y2="85" stroke="#5A6472" stroke-width="1.5" marker-end="url(#arrow)"/>
+                <g>
+                  <rect x="292" y="50" width="190" height="70" fill="#FAFAFA" stroke="#C9CCC3"/>
+                  <text x="387" y="74" text-anchor="middle" font-family="Inter" font-size="11" fill="#2D3748">Add-on tracks it</text>
+                  <text x="387" y="90" text-anchor="middle" font-family="Inter" font-size="11" fill="#2D3748">against that exact</text>
+                  <text x="387" y="106" text-anchor="middle" font-family="Inter" font-size="11" fill="#2D3748">thread</text>
+                  <title>Step 2: Thread-anchored tracking, not contact-anchored</title>
+                </g>
+                <line x1="482" y1="85" x2="524" y2="85" stroke="#5A6472" stroke-width="1.5" marker-end="url(#arrow)"/>
+                <g>
+                  <rect x="524" y="50" width="190" height="70" fill="#FAFAFA" stroke="#C9CCC3"/>
+                  <text x="619" y="74" text-anchor="middle" font-family="Inter" font-size="11" fill="#2D3748">Sidebar surfaces due</text>
+                  <text x="619" y="90" text-anchor="middle" font-family="Inter" font-size="11" fill="#2D3748">follow-ups with thread</text>
+                  <text x="619" y="106" text-anchor="middle" font-family="Inter" font-size="11" fill="#2D3748">context pre-loaded</text>
+                  <title>Step 3: Sidebar UI shows due follow-ups with context already loaded</title>
+                </g>
+                <line x1="714" y1="85" x2="746" y2="85" stroke="#5A6472" stroke-width="1.5" marker-end="url(#arrow)"/>
+                <g>
+                  <rect x="746" y="50" width="150" height="70" fill="#e6f4f3" stroke="#0F766E"/>
+                  <text x="821" y="80" text-anchor="middle" font-family="Inter" font-size="11" fill="#1E3A5F">Review draft,</text>
+                  <text x="821" y="96" text-anchor="middle" font-family="Inter" font-size="11" fill="#1E3A5F">one-click send</text>
+                  <title>Step 4: Rep reviews and sends from the same thread context</title>
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        <div class="deep-block">
+          <div class="deep-lbl">Decisions &amp; Trade-offs</div>
+          <table class="dlog">
+            <thead><tr><th>Decision</th><th>Options Considered</th><th>Choice</th><th>Why</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>Where to anchor follow-ups</td>
+                <td>Contact record (CRM default) vs. email thread</td>
+                <td class="dchoice">Email thread</td>
+                <td>Reps think in terms of "this conversation," not "this contact" — matching the mental model cut re-orientation time</td>
+              </tr>
+              <tr>
+                <td>Build vs. buy</td>
+                <td>Upgrade CRM tier vs. build in-house</td>
+                <td class="dchoice">Build in-house</td>
+                <td>Confirmed against vendor documentation that thread-level anchoring was a structural limitation, not a tier limitation — upgrading would not have solved it</td>
+              </tr>
+              <tr>
+                <td>Distribution</td>
+                <td>Standalone web tool vs. Gmail Add-on</td>
+                <td class="dchoice">Gmail Add-on</td>
+                <td>Reps live in Gmail all day; a separate destination would carry real adoption risk</td>
+              </tr>
+              <tr>
+                <td>Maintenance ownership</td>
+                <td>Vendor-supported feature vs. self-maintained script</td>
+                <td class="dchoice">Self-maintained</td>
+                <td>Accepted ongoing maintenance responsibility deliberately, in exchange for an exact fit to the real workflow</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="deep-block">
+          <div class="deep-lbl">Outcome</div>
+          <div class="outc-line"><span class="badge badge-v">Verified</span><span>Vendor product documentation confirmed thread-anchored follow-ups were not supported by the CRM's native sequencing feature — this finding is what justified the build decision.</span></div>
+          <div class="outc-line"><span class="badge badge-v">Verified</span><span>Built and shipped as a Gmail Add-on with a sidebar interface. Rolled out to the marketing team in July 2026 and in active daily use.</span></div>
+          <div class="outc-line"><span class="badge badge-e">Estimated</span><span>Expected to meaningfully cut the time reps spend re-locating threads and rebuilding context before each follow-up — not independently timed; a directional estimate, not a measured figure.</span></div>
+
+          <div class="biz-lens">
+            <div class="biz-item"><b>Cost avoided:</b> no incremental per-seat licensing for an upgraded CRM tier that wouldn't have solved the actual problem</div>
+            <div class="biz-item"><b>Adoption risk:</b> minimized by shipping inside the tool reps already use daily, instead of asking them to adopt a new destination</div>
+            <div class="biz-item"><b>Operational trade-off:</b> took on long-term maintenance ownership in exchange for an exact workflow fit — a deliberate, documented choice</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-foot">
+        <span class="tag">Google Apps Script</span>
+        <span class="tag">Gmail Add-on Framework</span>
+        <span class="tag">Vendor Documentation Review</span>
+        <span class="tag">Build vs. Buy</span>
+      </div>
+    </div>
+
+    <!-- ══════ Supporting Case 1: WMS ══════ -->
+    <div class="case">
+      <div class="case-head">
+        <div class="case-cat">Inventory &amp; Operations</div>
+        <div class="case-title">Warehouse Management System</div>
+        <div class="art-tags"><span class="art-tag">Process Diagram</span><span class="art-tag">Stakeholder Map</span></div>
+      </div>
+      <div class="case-cols">
+        <div><div class="col-lbl">Problem</div><div class="col-txt">No live stock visibility. Managers relied on verbal updates from floor staff for every status check. Paper registers went stale within hours; stockouts were identified only after production was already disrupted.</div></div>
+        <div><div class="col-lbl">My Role</div><div class="col-txt">Sole designer and builder. Gathered requirements directly from warehouse and QA staff, designed the data model, built the system, and ran adoption training for all four departments.</div></div>
+        <div><div class="col-lbl">Snapshot</div><div class="col-txt"><span class="badge badge-v" style="margin-bottom:8px;display:inline-block;">Verified</span><br>40+ daily users across four departments.</div></div>
+      </div>
+      <button class="acc-btn" onclick="toggleAcc(this,'wms-body')">
+        <span>View Full Case Study — Process, Decisions &amp; Outcome</span>
+        <span class="acc-chevron">▾</span>
+      </button>
+      <div class="acc-body" id="wms-body">
+        <div class="deep-block">
+          <div class="deep-lbl">Process &amp; Solution</div>
+          <div class="col-txt">Location-level inventory tracking for inward, outward, transfer, and consumption movements. Batch traceability, automated low-stock alerts, role-based dashboards for warehouse, QA, production, and management. Built on existing Workspace infrastructure to avoid new licensing spend.</div>
+        </div>
+        <div class="deep-block">
+          <div class="deep-lbl">Decisions &amp; Trade-offs</div>
+          <table class="dlog">
+            <thead><tr><th>Decision</th><th>Options</th><th>Choice</th><th>Why</th></tr></thead>
+            <tbody>
+              <tr><td>Alert channel</td><td>In-app notification vs. email</td><td class="dchoice">Email</td><td>Matched existing staff communication habits — improved response rate over an in-app inbox nobody checked</td></tr>
+              <tr><td>Data layer</td><td>Dedicated database vs. Sheets</td><td class="dchoice">Sheets</td><td>Non-technical staff could audit and correct records directly without a database admin</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="deep-block">
+          <div class="deep-lbl">Outcome</div>
+          <div class="outc-line"><span class="badge badge-v">Verified</span><span>First time the company had real-time, location-level inventory visibility. Paper registers and verbal stock checks replaced with a centralized system across four departments.</span></div>
+          <div class="biz-lens">
+            <div class="biz-item"><b>Operational trade-off:</b> chose auditability and non-technical handoff over the query performance a dedicated database would offer at this scale</div>
+          </div>
+        </div>
+      </div>
+      <div class="case-foot"><span class="tag">Google Apps Script</span><span class="tag">Google Sheets</span><span class="tag">Google Sites</span></div>
+    </div>
+
+    <!-- ══════ Supporting Case 2: RegDocs ══════ -->
+    <div class="case">
+      <div class="case-head">
+        <div class="case-cat">Regulatory &amp; Compliance</div>
+        <div class="case-title">Regulatory Document Generation System</div>
+        <div class="art-tags"><span class="art-tag">Process Diagram</span><span class="art-tag">Decision Log</span></div>
+      </div>
+      <div class="case-cols">
+        <div><div class="col-lbl">Problem</div><div class="col-txt">Sales depended on the Regulatory team for every COA, spec sheet, and compliance document — a structural bottleneck in the order-to-shipment workflow, with error risk at catalog scale.</div></div>
+        <div><div class="col-lbl">My Role</div><div class="col-txt">Sole designer and builder. Worked directly with Regulatory to codify approved templates and with Sales to understand self-service requirements.</div></div>
+        <div><div class="col-lbl">Snapshot</div><div class="col-txt"><span class="badge badge-v" style="margin-bottom:8px;display:inline-block;">Verified</span><br>400+ products, six categories covered.</div></div>
+      </div>
+      <button class="acc-btn" onclick="toggleAcc(this,'reg-body')">
+        <span>View Full Case Study — Process, Decisions &amp; Outcome</span>
+        <span class="acc-chevron">▾</span>
+      </button>
+      <div class="acc-body" id="reg-body">
+        <div class="deep-block">
+          <div class="deep-lbl">Process &amp; Solution</div>
+          <div class="col-txt">Self-service document engine covering 400+ products across six categories. Fixed QC-approved templates for standard requests; a configurable mode for genuine regulatory exceptions, maintained by the Regulatory team without touching code. Browser-native PDF export — no software installation required.</div>
+        </div>
+        <div class="deep-block">
+          <div class="deep-lbl">Decisions &amp; Trade-offs</div>
+          <table class="dlog">
+            <thead><tr><th>Decision</th><th>Options</th><th>Choice</th><th>Why</th></tr></thead>
+            <tbody>
+              <tr><td>Template flexibility</td><td>Fully fixed vs. fully open</td><td class="dchoice">Hybrid</td><td>Fixed mode protects QC integrity for standard requests; configurable mode handles real exceptions without bottlenecking on Regulatory</td></tr>
+              <tr><td>Parameter ownership</td><td>Hardcoded vs. spreadsheet registry</td><td class="dchoice">Spreadsheet</td><td>Regulatory team updates product parameters directly — no dependency on the developer for routine changes</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="deep-block">
+          <div class="deep-lbl">Outcome</div>
+          <div class="outc-line"><span class="badge badge-v">Verified</span><span>Non-technical Sales staff generate QC-approved documents independently. The structural dependency on Regulatory for routine requests was removed.</span></div>
+          <div class="biz-lens">
+            <div class="biz-item"><b>Strategic positioning:</b> redirected Regulatory team capacity from repetitive document production to higher-value compliance work</div>
+          </div>
+        </div>
+      </div>
+      <div class="case-foot"><span class="tag">HTML/CSS/JS</span><span class="tag">Google Apps Script</span><span class="tag">Google Sheets</span></div>
+    </div>
+
+    <!-- ALSO BUILT -->
+    <div style="margin-top:44px;">
+      <div class="col-lbl" style="margin-bottom:16px;">Also Shipped — Smaller Automations, Real Time Saved</div>
+      <div class="also-grid">
+        <div class="also-card">
+          <div class="also-title">Internal Task Coordination Platform</div>
+          <div class="also-txt">Replaced informal messaging-based task assignment with escalation routing, SLA tracking, and turnaround analytics for 30+ users.</div>
+          <div class="also-outcome">Verified — 30+ active users</div>
+        </div>
+        <div class="also-card">
+          <div class="also-title">QC Certificate Extraction Tool</div>
+          <div class="also-txt">Python tool that batch-extracts parameters from supplier lab certificates, replacing manual transcription. Confidence-flags uncertain extractions for human review.</div>
+          <div class="also-outcome">Verified — eliminated manual transcription</div>
+        </div>
+        <div class="also-card">
+          <div class="also-title">Expiry &amp; Certificate Tracker</div>
+          <div class="also-txt">Automated tracking and alerting for certificate renewal deadlines across the organization.</div>
+          <div class="also-outcome">Verified — zero missed renewals since deployment</div>
+        </div>
+        <div class="also-card">
+          <div class="also-title">Asset Management System</div>
+          <div class="also-txt">Centralized tracking for company assets across departments, replacing spreadsheet-based records with an auditable system.</div>
+          <div class="also-outcome">Verified — in daily use</div>
+        </div>
+        <div class="also-card">
+          <div class="also-title">Product Label Tracker</div>
+          <div class="also-txt">Version control system for packaging and label artwork, preventing outdated labels from reaching production.</div>
+          <div class="also-outcome">Verified — in daily use</div>
+        </div>
+        <div class="also-card">
+          <div class="also-title">Power BI Reporting Dashboards</div>
+          <div class="also-txt">Cross-team dashboards for data visualization and reporting, built for teams without dedicated analytics support.</div>
+          <div class="also-outcome">Verified — in active use</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DECISIONS & EVALUATIONS -->
+<section id="decisions" class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Decisions &amp; Evaluations</div>
+      <h2 class="sec-h2">Vendor Selection, Procurement &amp; Risk</h2>
+      <p class="sec-sub">Structured decisions made under real constraints — budget, compliance, adoption risk, and integration complexity.</p>
+    </div>
+
+    <div class="dec">
+      <div class="dec-head">
+        <div class="dec-type">Vendor Selection · CRM Platform</div>
+        <div class="dec-title">CRM Platform Evaluation &amp; Contract Negotiation</div>
+      </div>
+      <div class="dec-body">
+        <div class="dec-cols">
+          <div><div class="col-lbl">Context</div><div class="col-txt">Organisation had no CRM. Sales managed relationships through email and spreadsheets. Goal: select a platform non-technical users would actually adopt, with a viable ERP integration path.</div></div>
+          <div><div class="col-lbl">Approach</div><div class="col-txt">Weighted evaluation matrix — adoption risk, integration capability, support quality, three-year cost, timeline. Live demos and internal stakeholder sessions for each shortlisted platform.</div></div>
+          <div><div class="col-lbl">Outcome</div><div class="col-txt">Selected platform on lower adoption risk despite higher list cost. Implementation contract subsequently renegotiated to extend training scope at no added cost.</div></div>
+        </div>
+        <div class="insight-box">
+          <div class="insight-lbl">Security Finding — UAT</div>
+          <div class="insight-txt">During UAT, a demo environment was found surfacing historical production data in active test sessions. Reproduced, documented, and escalated to the vendor's development team — resolved before go-live. This finding was made by the internal reviewer, not flagged by the vendor's own QA.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dec">
+      <div class="dec-head">
+        <div class="dec-type">Build vs. Buy · Pharma Compliance</div>
+        <div class="dec-title">Electronic Batch Records: Build vs. Buy Analysis</div>
+      </div>
+      <div class="dec-body">
+        <div class="dec-cols">
+          <div><div class="col-lbl">Context</div><div class="col-txt">Required an electronic batch manufacturing record system to digitize production documentation — a regulatory requirement in a GMP environment. Specialist vendor quotes evaluated.</div></div>
+          <div><div class="col-lbl">Assessment</div><div class="col-txt">Specialist vendor solutions come pre-validated but carry high first-year cost and configuration complexity. High fit risk if internal requirements aren't yet stable.</div></div>
+          <div><div class="col-lbl">Decision</div><div class="col-txt">Internal prototype build initiated to define requirements precisely before any vendor commitment — de-risking a future purchase rather than replacing it outright.</div></div>
+        </div>
+        <div class="insight-box">
+          <div class="insight-lbl">Build vs. Buy Framework</div>
+          <div class="insight-txt">Not a purely cost-driven call. Weighed: validation burden of an internal build in a GMP environment, the risk of configuring a vendor system against unstable requirements, and the strategic value of a prototype in making any future vendor selection more accurate.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section id="skills" class="sec sec-alt">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Capabilities</div><h2 class="sec-h2">Technical &amp; Operational Skill Set</h2></div>
+    <div class="skills-tbl">
+      <div class="skill-row">
+        <div class="skill-cat">Operational Expertise</div>
+        <div class="skill-items">
+          <span class="skill-item">ERP Implementation &amp; Administration</span>
+          <span class="skill-item">Workflow &amp; Process Automation</span>
+          <span class="skill-item">Vendor Evaluation &amp; Procurement</span>
+          <span class="skill-item">Requirements Gathering &amp; Analysis</span>
+          <span class="skill-item">UAT Design &amp; Execution</span>
+          <span class="skill-item">Build vs. Buy Analysis</span>
+          <span class="skill-item">GMP &amp; Regulatory Compliance Workflows</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-cat">Platforms &amp; Tools</div>
+        <div class="skill-items">
+          <span class="skill-item">ERP Administration (TCS iON)</span>
+          <span class="skill-item">Google Workspace</span>
+          <span class="skill-item">Supabase (PostgreSQL, RLS)</span>
+          <span class="skill-item">Power BI</span>
+          <span class="skill-item">Git / GitHub</span>
+          <span class="skill-item">CRM Platforms</span>
+        </div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-cat">Languages &amp; Scripting</div>
+        <div class="skill-items">
+          <span class="skill-item">Google Apps Script</span>
+          <span class="skill-item">Python</span>
+          <span class="skill-item">VBA</span>
+          <span class="skill-item">HTML / CSS / JavaScript</span>
+          <span class="skill-item">SQL</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="sec">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Education</div><h2 class="sec-h2">Academic Background</h2></div>
+    <div class="edu-row">
+      <div class="edu-card">
+        <div class="edu-deg">B.Tech — Computer Science Engineering</div>
+        <div class="edu-school">Jodhpur Institute of Engineering and Technology</div>
+        <div class="edu-date">2021 — 2025</div>
+        <div class="edu-badge">GPA 9.59 · Semester Topper (SGPA 10.00 &amp; 9.83)</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-deg">Certifications</div>
+        <div class="edu-school">Professional Development</div>
+        <div class="edu-date">2022 — 2024</div>
+        <ul style="list-style:none;">
+          <li style="font-size:.88rem;color:var(--ink);padding:8px 0;border-bottom:1px solid var(--line);">Python for Data Science — NPTEL (Elite)</li>
+          <li style="font-size:.88rem;color:var(--ink);padding:8px 0;">Software Engineer Track — Infosys Springboard</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="sec">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Contact</div><h2 class="sec-h2">Available for BSA, ERP &amp; Digital Transformation Roles</h2></div>
+    <div class="contact-grid">
+      <div>
+        <p class="contact-body">Open to Business Systems Analyst, ERP Implementation, Digital Transformation, and Workflow Automation roles — remote, hybrid, or in Jodhpur.</p>
+        <div class="contact-links">
+          <a href="mailto:kadambari0608@gmail.com" class="contact-link"><span class="lk">Email</span><span class="lv">kadambari0608@gmail.com</span></a>
+          <a href="https://www.linkedin.com/in/kadambari-purohit-8604ba243" target="_blank" class="contact-link"><span class="lk">LinkedIn</span><span class="lv">View Profile →</span></a>
+          <a href="https://github.com/kadambari68" target="_blank" class="contact-link"><span class="lk">GitHub</span><span class="lv">View Repositories →</span></a>
+        </div>
+      </div>
+      <div class="avail-box">
+        <div class="avail-title">What I'm Looking For</div>
+        <p class="avail-body">Roles where I own end-to-end systems work — from requirement gathering and vendor evaluation through build, deployment, and iteration. Preference for operationally complex, regulated environments.</p>
+        <div class="avail-tags">
+          <span>Business Systems Analyst</span><span>ERP Implementation</span><span>Digital Transformation</span><span>Workflow Automation</span><span>Remote OK</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><p>Kadambari Purohit · Jodhpur, Rajasthan · <a href="mailto:kadambari0608@gmail.com">kadambari0608@gmail.com</a></p></footer>
+
+<script>
+function toggleAcc(btn, id){
+  const body = document.getElementById(id);
+  const open = body.classList.contains('open');
+  body.classList.toggle('open', !open);
+  btn.classList.toggle('open', !open);
+}
+function showFlow(which, btn){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('flow-manual').style.display = which==='manual' ? 'block':'none';
+  document.getElementById('flow-auto').style.display = which==='auto' ? 'block':'none';
+}
+function toggleNav(){
+  const ul = document.querySelector('.nav-links');
+  if(ul.style.display==='flex'){ ul.style.display='none'; }
+  else {
+    Object.assign(ul.style,{display:'flex',flexDirection:'column',position:'absolute',top:'58px',left:'0',right:'0',background:'var(--surface)',padding:'18px 26px',borderBottom:'1px solid var(--line)',gap:'14px',zIndex:'199'});
+  }
+}
+function toggleTheme(){
+  const html = document.documentElement;
+  const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+}
+</script>
+
+<script data-goatcounter="https://kadambaripurohit.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
